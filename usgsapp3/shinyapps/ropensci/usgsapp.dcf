@@ -1,0 +1,4 @@
+name: usgsapp
+account: ropensci
+bundleId: 16808
+url: http://ropensci.shinyapps.io/usgsapp

@@ -1,0 +1,65 @@
+<style>
+ .btn { float: right; }
+ a.tooltip{ z-index:1030; background-color: #000000}
+ 
+  .row-fluid .span1 { width: 1.982906%; }
+  #tnrs{ 
+    height:600px;
+    overflow:auto; 
+  }
+</style>
+
+<!-- Downoad Button -->
+<!-- <button id="tnrs" class="btn btn-success"><i rel="tooltip" title="Download as csv" class="icon-download icon-white"></i></button> -->
+
+<!-- Button to trigger modal -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+<div class="span1" style="float: right;">
+    <a href="#myModal" role="btn" class="btn btn-inverse" data-toggle="modal" rel="tooltip" title="Get code"><i class="icon-code icon-white"></i></a>
+    <a href="#tnrsModal" role="btn" class="btn btn-info" data-toggle="modal" style="float:right;" rel="tooltip" title="Information"><i class="icon-question-sign icon-white"></i></a>
+    <a id="download_tnrs" class="btn btn-warning shiny-download-link .Primitive(&quot;class&quot;)" href="" target="_blank" rel="tooltip" title="Download this data"><i class="icon-download icon-white"></i></a>
+</div>
+
+<!-- <a href="#myModal" role="btn" class="btn btn-inverse" data-toggle="modal"><i class="icon-code icon-white"></i></a> -->
+
+<!-- Get Code Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="myModalLabel">Run the code locally</h3>
+     </div>
+     
+     <div class="modal-body">
+          <!-- <pre class="pre-scrollable"> -->
+          <pre class="prettyprint">
+install.packages("taxize")
+library(taxize)
+species <- c("species1","species2","species3")
+tnrs(species, getpost="POST", source_ = "NCBI")[,1:5]
+          </pre>
+     </div>
+</div>
+
+<!-- <a href="#tnrsModal" role="btn" class="btn btn-info" data-toggle="modal" style="float:right;"><i class="icon-question-sign icon-white"></i></a> -->
+
+<!-- Modal -->
+<div id="tnrsModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="tnrsModal">Info</h3>
+     </div>
+
+     <div class="modal-body">
+          <a href="http://taxosaurus.org/">Data from the Taxosaurus API</a><br><br>
+          <h5>Data Fields</h5>
+          <ul><small>
+                <li><strong>submittedName:</strong> the submitted name</li>
+               <li><strong>acceptedName:</strong> the new name</li>
+               <li><strong>sourceID:</strong> the original source</li>
+               <li><strong>score:</strong> higher score = better match</li>
+               <li><strong>matchedName:</strong> name matched against</li>
+          </small></ul>
+     </div>
+</div>
